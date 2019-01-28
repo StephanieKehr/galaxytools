@@ -1,0 +1,7 @@
+#D-box targets:
+U95-1_H.sapiens	D	H_sapiens_28S-2802	-23.70              	(((((((((((((.&.)))))))))))))                GAACAmGCCTCTGGC&TCCAGAGGCTGTTT               
+#D'-box targets:
+U95-1_H.sapiens	D'	H_sapiens_28S-2811	-20.30              	.(((((((((((.&.))))))))))).                  CTGGCmATGTTGGA&CCCAACATGCCAT                 
+#D-box targets:
+U95-2_H.sapiens	D	H_sapiens_28S-2802	-23.90              	(((((((((((((.&.)))))))))))))                GAACAmGCCTCTGGC&CCCAGAGGCTGTTT               
+#D'-box targets:

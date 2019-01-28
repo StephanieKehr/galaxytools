@@ -1,0 +1,57 @@
+<tool id="plexy" name="target prediction for box C/D snoRNAs" version="0.1.0">
+  
+  <requirements>
+    <requirement type="package" version="2.4.5">viennarna</requirement>
+  </requirements>
+  
+  <command detect_errors="exit_code"><![CDATA[
+  $__tool_directory__/plexy.pl -f '$inputSno' -o temp/ -T '$inputTarget' -e '$energy'
+  #if $large
+  $large
+  #end if
+  #if $profile
+  -p $profile
+  #end if
+  > '$output'
+  ]]></command>
+  
+  <inputs>
+    <param format="fasta" type="data" name="inputSno" label="SnoRNA File" />
+    <param format="fasta" type="data" name="inputTarget" label="TargetRNA File" />
+    <param type="float"  name="energy" label="energy treshold" value="-7.70" />
+    <param type="boolean"  name="large" label="large" checked="false" truevalue="-l" falsevalue=""/>
+    <param format="txt" type="data" name="profile" label="accessibility profile" optional="true" />
+  </inputs>
+  
+  <!--
+      <param type=data -t : directory with putative target RNA sequences (or use -T) />
+      <param type=data [-p] : directory containing accessibility-profiles />
+  -->
+  
+  <outputs>
+    <data name="output" format="txt" label="${tool.name} on ${on_string}: Targets" />
+  </outputs>
+  
+  <tests>
+    <test>
+      <param name="inputSno" value="U95.fa"/>
+      <param name="inputTarget" value="allTargets_human.fa"/>
+      <param name="energy" value="-20.00" />
+      <output name="output" file="targets.txt" />
+    </test>
+  </tests>
+      <!--
+          <output name="output1" file="2.fasta"/>
+      -->
+  
+  <help><![CDATA[
+  Plexy predicts putative interactions between box C/D snoRNAs and provided target
+  RNA sequences.
+  plexy.pl -o [directory] -f [fa-file] -t|T [directory|File]
+  ]]></help>
+  
+  <citations>
+    <citation type="doi">10.1093/bioinformatics/btq642</citation>
+  </citations>
+
+</tool>
